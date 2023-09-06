@@ -81,17 +81,34 @@ def fibonacci_it(n)
   previous_fib
 end
 
-def binary_search(array, n)
+def bsearch(array, n)
+    # p array
+
     array = array.sort
     middle = array.length / 2
     if array[middle] < n 
-        binary_search(array[middle+1..-1])
+        if array[middle+1..-1].length == 0
+            return nil
+        else
+            return middle + bsearch(array[middle+1..-1], n)
+        end
     elsif array[middle] > n 
-        binary_search(array[0...middle])
+        if array[0...middle].length == 0
+            return nil
+        else
+            return bsearch(array[0...middle], n)
+        end
     else
-        
-
-
+        return middle
+    end
 end
+
+p bsearch([1, 2, 3], 1) # => 0
+p bsearch([2, 3, 4, 5], 3) # => 1
+p bsearch([2, 4, 6, 8, 10], 6) # => 2
+p bsearch([1, 3, 4, 5, 9], 5) # => 3
+p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+p bsearch([1, 2, 3, 4, 5, 7], 6)
 
 
