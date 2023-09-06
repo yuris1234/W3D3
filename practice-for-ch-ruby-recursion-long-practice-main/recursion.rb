@@ -1,3 +1,5 @@
+require "byebug"
+
 def range_iter(start, last)
     return [] if last < start
     new_arr = []
@@ -82,18 +84,20 @@ def fibonacci_it(n)
 end
 
 def bsearch(array, n)
-    # p array
-
+    if array.length == 0
+        return nil
+    end
     array = array.sort
     middle = array.length / 2
+
     if array[middle] < n 
-        if array[middle+1..-1].length == 0
+        if bsearch(array[middle+1..-1], n) == nil
             return nil
         else
-            return middle + bsearch(array[middle+1..-1], n)
+            return middle + bsearch(array[middle+1..-1], n) + 1
         end
     elsif array[middle] > n 
-        if array[0...middle].length == 0
+        if bsearch(array[0...middle], n) == nil
             return nil
         else
             return bsearch(array[0...middle], n)
@@ -103,12 +107,14 @@ def bsearch(array, n)
     end
 end
 
-p bsearch([1, 2, 3], 1) # => 0
-p bsearch([2, 3, 4, 5], 3) # => 1
-p bsearch([2, 4, 6, 8, 10], 6) # => 2
-p bsearch([1, 3, 4, 5, 9], 5) # => 3
-p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-p bsearch([1, 2, 3, 4, 5, 7], 6)
+# p bsearch([1, 2, 3], 1) # => 0
+# p bsearch([2, 3, 4, 5], 3) # => 1
+# p bsearch([2, 4, 6, 8, 10], 6) # => 2
+# bsearch([1,2,3,4,5], 4) # => 3
+# p bsearch([1,2,3,4,5], 6) # => 3
+# p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+# p bsearch([1, 2, 3, 4, 5, 7], 6)
 
+# p bsearch([3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], 11)
 
