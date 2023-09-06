@@ -11,7 +11,8 @@ def range_rec(start, last)
     return [start] if start == last - 1
     return [] if last <= start 
 
-    # range_rec(start, start) --> [start] << range_rec(start, last-1) 
+
+    return range_rec(start, last - 1) + [last-1]
 end
 
 # p range_iter(1,5)
@@ -20,3 +21,8 @@ end
 # # p range_rec(5, 1)
 # p range_rec(5, 5)
 # p range_rec(5, 6)
+# p range_rec(5, 10)
+# p range_rec(5, 5)
+# p range_rec(10, 5)
+# p range_rec(5, 6)
+# p range_rec(1, 1000)
