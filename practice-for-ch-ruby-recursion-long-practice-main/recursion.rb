@@ -105,7 +105,20 @@ def bsearch(array, n)
     else
         return middle
     end
-end
+
+    def merge_sort(array)
+        return array if array.length == 0 || array.length == 1
+        print array
+        middle = array.length / 2
+        left = array[0..middle]
+        right = array[middle+1..-1]
+        merge_sort(left)
+        merge_sort(right)
+        end
+
+        a = [5,7,1,2]
+    end
+    
 
 # p bsearch([1, 2, 3], 1) # => 0
 # p bsearch([2, 3, 4, 5], 3) # => 1
