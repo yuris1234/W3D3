@@ -71,3 +71,14 @@ class Array
 
 end
 
+def fibonacci_it(n)
+  return [] if n == 0  
+  return [1] if n == 1
+  return [0, 1] if n == 2
+  prev_fib = fibonacci_it(n - 1)
+
+  prev_fib << previous_fib[- 1] + previous_fib[-2]
+  previous_fib
+end
+
+
