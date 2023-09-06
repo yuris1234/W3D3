@@ -21,10 +21,10 @@ def exp_1(b, n)
    b * exp_1(b, n - 1)
 end
 
-p exp_1(5, 0)
-p exp_1(5, 1)
-p exp_1(5, 2)
-p exp_1(5, 100)
+# p exp_1(5, 0)
+# p exp_1(5, 1)
+# p exp_1(5, 2)
+# p exp_1(5, 100)
 
 def exp_2(b, n)
   return 1 if n == 0
@@ -37,10 +37,10 @@ def exp_2(b, n)
     end
 end
 
-p exp_2(5, 0)
-p exp_2(5, 1)
-p exp_2(5, 2)
-p exp_2(5, 256)
+# p exp_2(5, 0)
+# p exp_2(5, 1)
+# p exp_2(5, 2)
+# p exp_2(5, 256)
 
 
 
@@ -55,3 +55,38 @@ p exp_2(5, 256)
 # p range_rec(10, 5)
 # p range_rec(5, 6)
 # p range_rec(1, 1000)
+
+class Array
+    def deep_dup
+        if self.is_a?(Array) && self.length == 1
+            return self
+        end
+
+        new_arr = []
+        self.each do |ele|
+            if !ele.is_a?(Array)
+                new_arr << ele
+            else
+                new_arr.concat(ele.deep_dup)
+            end
+        end
+        new_arr
+    end
+
+end
+
+a = [1, [2], [3, [4]]]
+p a.deep_dup
+p a.dup
+# a.deep_dup.each do |sub|
+#     a.each do |sub1|
+#         p sub.object_id == sub1.object_id 
+#     end
+# end
+
+# a.dup.each do |sub|
+#     a.each do |sub1|
+#         p sub.object_id == sub1.object_id
+#     end
+# end
+
