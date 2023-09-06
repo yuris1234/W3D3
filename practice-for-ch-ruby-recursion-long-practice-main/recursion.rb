@@ -58,35 +58,16 @@ end
 
 class Array
     def deep_dup
-        if self.is_a?(Array) && self.length == 1
-            return self
-        end
-
         new_arr = []
         self.each do |ele|
             if !ele.is_a?(Array)
                 new_arr << ele
             else
-                new_arr.concat(ele.deep_dup)
+                new_arr << ele.deep_dup
             end
         end
         new_arr
     end
 
 end
-
-a = [1, [2], [3, [4]]]
-p a.deep_dup
-p a.dup
-# a.deep_dup.each do |sub|
-#     a.each do |sub1|
-#         p sub.object_id == sub1.object_id 
-#     end
-# end
-
-# a.dup.each do |sub|
-#     a.each do |sub1|
-#         p sub.object_id == sub1.object_id
-#     end
-# end
 
