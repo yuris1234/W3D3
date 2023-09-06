@@ -15,6 +15,35 @@ def range_rec(start, last)
     return range_rec(start, last - 1) + [last-1]
 end
 
+def exp_1(b, n)
+   return 1 if n == 0
+   return b if n == 1
+   b * exp_1(b, n - 1)
+end
+
+p exp_1(5, 0)
+p exp_1(5, 1)
+p exp_1(5, 2)
+p exp_1(5, 100)
+
+def exp_2(b, n)
+  return 1 if n == 0
+  return b if n == 1  
+  
+    if n.even?
+       return exp_2(b, n / 2) ** 2
+    else
+      return  b * (exp_2(b, (n - 1) / 2) ** 2)
+    end
+end
+
+p exp_2(5, 0)
+p exp_2(5, 1)
+p exp_2(5, 2)
+p exp_2(5, 256)
+
+
+
 # p range_iter(1,5)
 # p range_iter(5, 1)
 # p range_rec(1,5)
