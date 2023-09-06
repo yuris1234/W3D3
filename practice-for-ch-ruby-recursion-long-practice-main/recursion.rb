@@ -81,4 +81,17 @@ def fibonacci_it(n)
   previous_fib
 end
 
+def binary_search(array, n)
+    array = array.sort
+    middle = array.length / 2
+    if array[middle] < n 
+        binary_search(array[middle+1..-1])
+    elsif array[middle] > n 
+        binary_search(array[0...middle])
+    else
+        
+
+
+end
+
 
