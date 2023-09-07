@@ -109,7 +109,6 @@ end
 
 def merge_sort(array)
     return [array] if array.length == 0 || array.length == 1
-    print array
     middle = array.length / 2
     left = array[0...middle]
     right = array[middle..-1]
